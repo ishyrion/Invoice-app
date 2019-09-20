@@ -1,0 +1,10 @@
+.invoice-position {
+    &__add-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__icon-plus{
+        margin: auto;
+    }    
+}

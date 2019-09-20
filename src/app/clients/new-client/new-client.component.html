@@ -1,0 +1,98 @@
+<div id="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-3 py-4 px-md-5">
+              <div class="info-form">
+                <h2>Add new client</h2>
+                  <form [formGroup]="clientForm" (ngSubmit)="handleSubmit($event)">
+                      <div class="form-group">
+                          <label for="firstName">First name</label>
+                          <input
+                            id="firstName"
+                            formControlName="firstName"                        
+                            type="text"
+                            class="form-control"
+                            placeholder="First name"
+                            required
+                            pattern="^[A-Za-z]+$"
+                            minlength="2"
+                            maxlength="13"/>
+                          <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">                            
+                            <div *ngIf="firstName.errors?.required">
+                              First name is required.
+                            </div>
+                            <div *ngIf="firstName.errors?.minlength">
+                              First name must be at least 2 characters.
+                            </div>
+                            <div *ngIf="firstName.errors?.maxlength">
+                              First name is too long.
+                            </div>
+                            <div *ngIf="firstName.errors?.pattern">
+                              First name cannot be number.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="lastName">Last name</label>
+                          <input
+                            id="lastName"
+                            formControlName="lastName"    
+                            type="text"
+                            class="form-control"
+                            placeholder="Last name"
+                            pattern="^[A-Za-z]+$"
+                            minlength="2"
+                            maxlength="13"
+                            required>
+                          <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">                            
+                            <div *ngIf="lastName.errors?.required">
+                              Last name is required.
+                            </div>
+                            <div *ngIf="lastName.errors?.minlength">
+                              Last name must be at least 2 characters.
+                            </div>
+                            <div *ngIf="lastName.errors?.maxlength">
+                              Last name is too long.
+                            </div>
+                            <div *ngIf="lastName.errors?.pattern">
+                              Last name cannot be number.
+                            </div>
+                          </div>
+                      </div>    
+                      <div class="form-group">
+                          <label for="taxNumber">Tax number</label>
+                          <input
+                            id="taxNumber"
+                            formControlName="taxNumber"
+                            type="text"
+                            class="form-control"
+                            placeholder="Tax number"
+                            pattern="^[0-9]+$"
+                            maxlength="9"
+                            minlength="9"
+                            required>
+                          <div class="alert alert-danger" *ngIf="tax.touched && !tax.valid">                            
+                            <div *ngIf="tax.errors?.required">
+                              Tax number is required.
+                            </div>
+                            <div *ngIf="tax.errors?.minlength">
+                              Tax number must have 9 digits.
+                            </div>
+                            <div *ngIf="tax.errors?.pattern">
+                              Tax number must be number.
+                            </div>
+                          </div>                          
+                      </div>
+                      <button
+                        class="btn btn-primary"
+                        type="submit">
+                        Submit
+                      </button>
+                  </form>
+              </div>
+            </div>
+        </div>
+        
+      </div>
+</div>
+  <!-- [routerLink]="['/clients']"-->

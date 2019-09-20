@@ -1,0 +1,17 @@
+<td scope="row">
+  {{ lp }}
+</td>
+<td>
+  {{ client.firstName }}
+</td>
+<td>
+    {{ client.lastName }}
+</td>
+<td>
+  {{ client.taxNumber }}
+</td>
+<div class="d-flex justify-content-center">
+  <button (click)=removeClient() class="btn btn-dark">
+      <fa-icon [icon]="faTrash"></fa-icon>
+  </button>
+</div>

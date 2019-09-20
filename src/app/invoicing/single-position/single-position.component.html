@@ -1,0 +1,50 @@
+<td scope="row">
+    {{lp}}
+  </td>
+  <td>
+    <input 
+      class="form-control" type="text" 
+      name="name" 
+      [value]=position.name 
+      (keyup)=handleAutocompleteName($event) 
+      autocomplete="off"
+      placeholder="e.g. Laptop service"
+    />
+    <ul class="single-position__suggestion-list" *ngIf="suggestions.length > 0">
+      <li class="single-position__suggestion-item" *ngFor="let suggestion of suggestions" (click)=selectSuggestion(suggestion)>{{ suggestion.label }}</li>
+    </ul>
+  </td>
+  <td>
+    <input class="form-control" type="number" name="quantity" [value]=position.quantity [(ngModel)]=position.quantity/>
+  </td>
+  <td> 
+    <select class="form-control" name="unit" [value]=position.unit [(ngModel)]=position.unit>
+      <option *ngFor="let u of availableUnits" [value]=u>{{u}}</option>
+    </select>
+  </td>
+  <td>
+    <div class="input-group">
+      <input [(ngModel)]=position.netto type="number" class="form-control" name="netto" [value]=position.netto (change)=handleChangeNetto($event) />
+      <div class="input-group-append">
+        <span class="input-group-text">PLN</span>
+      </div>
+    </div>    
+  </td>
+  <td>
+      <select [(ngModel)]=position.tax class="form-control" name="tax" [value]=position.tax (change)=handleChangeTax($event)>
+          <option *ngFor="let t of availableTaxes" [value]=t>{{t}}</option>
+      </select>
+  </td>
+  <td>
+    <div class="input-group">
+      <input [(ngModel)]=position.brutto type="number" class="form-control" name="brutto" [value]=position.brutto (change)=handleChangeBrutto($event)/>
+      <div class="input-group-append">
+        <span class="input-group-text">PLN</span>
+      </div>
+    </div>
+  </td>
+  <td>
+    <button (click)=removePosition() class="btn btn-dark">
+        <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+  </td>

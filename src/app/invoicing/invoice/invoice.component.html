@@ -1,0 +1,28 @@
+<!-- Client and Date/Number component -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 py-3 px-5">
+            <h3>Client</h3>
+            <select class="form-control">
+                <option
+                    *ngFor="let client of clients">
+                        {{ client.firstName }} {{ client.lastName }} - ({{ client.taxNumber }})
+                </option>
+            </select>
+        </div>    
+    </div>
+</div>
+<div class="row">
+    <div class="col py-3 px-5">
+        <app-invoice-positions
+            [positions]=invoice.items
+            (itemsChanged)=updateItems($event)>
+        </app-invoice-positions>
+        <app-summary
+            [summary]=invoiceSummary>
+        </app-summary>
+    </div>
+</div>
+
+
+
